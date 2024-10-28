@@ -240,21 +240,181 @@ let age2 = 19;
 let phrase2 = age2 >= 18 ? "majeur" : "mineur";
 console.log("vous êtes " + phrase2);
 
-
 // La portée des variables
 
-
-if (age2 >=18){
-    let pp=3
+if (age2 >= 18) {
+  let pp = 3;
 }
 //console.log(pp);  on aura  une erreur,let pp existe que dans la condition si dessus.
 
 //les variables ont une portée limitée et n'existent que dans le bloc où elles sont définies.
 
-let aaa=5;
-if(true){
-    console.log(aaa)
-    aaa=47
+let aaa = 5;
+if (true) {
+  console.log(aaa);
+  aaa = 47;
 }
-console.log(aaa)
-//En revanche une variable peut être lue dans les blocs enfant
+console.log(aaa);
+
+//En revanche une variable peut être lue dans les blocs enfants
+
+//Attention au comportement du var. Il a pour portée
+//la fonction qui le contient, s'il est dans le script principal,on peut accéder à var n'importe où
+//cela peut créer des comportements inattendus
+
+//Les Boucles
+
+/*Elles permettent de répéter une certaine logique suivant une condition précise.
+Il existe plusieurs manières de créer des boucles.
+
+
+*/
+
+// La boucle while
+/*  
+while(<condition>){
+//code à répéter}
+<condition> -> tant que cette condition n'est pas satisfaite ,la boucle continuera.
+
+*/
+let i = 0;
+while (i < 5) {
+  console.log("je compte" + i + " avec la boucle while");
+  i++;
+}
+
+// do-while
+let j = 0;
+do {
+  console.log("je compte" + j + " avec la boucle do-while");
+  if (j === 1) {
+    break;
+  }
+  j++;
+} while (j < 5);
+
+// Boucle for
+
+//Elle permet d'éxecuter un code un certain nombre de fois en précisant manuellement
+//l'intervalle pour lequel on souhaite faire la boucle, elle présente une notation plus concise que la while.
+
+for (let i = 0; i < 3; i++) {
+  console.log("je compte" + i + " avec la boucle for");
+}
+
+//for-of
+
+const fruits = ["fraise", "framboise", "cerise", "litchi"];
+
+for (fruit of fruits) {
+  console.log(fruit);
+}
+//avec while
+let q = 0;
+while (q <= 10) {
+  let result = 7 * q;
+  console.log(`7*${q}=${result}  avec while`);
+  q++;
+}
+//avec for
+for (let z = 0; z <= 10; z++) {
+  //let result = 7 * z;
+  if (z !== 5) {
+    //console.log(`7 x ${z}=${result} mais avec for`);
+    console.log(`7x${z}=${z * 7} mais avec for`);
+  }
+}
+
+const nombres = [3, 7, 12, 5, 20, 8];
+let result = 0;
+for (nombre of nombres) {
+  console.log(nombre);
+  result += nombre; // result= result +number;
+  console.log(`la somme est ${result}.`);
+}
+
+/*let message = parseInt(prompt("Devine le nombre entre 1 et 10 :"));
+console.log(message);
+let secretNumber = Math.ceil(Math.random()*10);
+
+if (message !== secretNumber){
+do {
+  message = parseInt(prompt("Presque... Essaie encore"));
+  if(message>10 || message<1){ 
+    do{
+      message = parseInt(prompt("choisis un chiffre entre 1 et 10!!!!!"));}
+      while (message>10 || message<1);
+    }
+ 
+} while (message !== secretNumber);
+}
+alert ("c'est bien ça");*/
+
+/*
+if(message<secretNumber){console.log("le chiffre est supérieur")
+ }else if(message>secretNumber){console.log("le chiffre est inférieur")}
+*/
+
+// Les Fonctions
+
+/* On va être très rapidement amenés à répéter une même logique plusieurs fois. 
+Pour remédier à ce problème, il est possible d'écrire des fonctions.
+
+function<nome de la fonction en pascalCase(argument1,argument2,etc)
+
+PS : certaines fonctions ne nécessitent aucun argument ,d'autres plusieurs.
+*/
+// Exemple de fonction sans arguments
+function coucou() {
+  console.log("coucou");
+}
+//on a juste déclaré la fonction.
+//Il ne se passera rien dans la console.
+//Pour que ça marche, on doit appeler la fonction.
+
+coucou();
+function saluer(nom) {
+  console.log("Salut" + nom + "!");
+}
+saluer("Momo");
+saluer("Jean");
+
+// Le retour
+/*
+Il y a un concept essentiel sur les fonctions: les valeurs de retour.
+Certaines fonctions ne renvoient pas de valeurs significatives(fonctions vides).
+D'autres le font.
+Il est important de comprendre quelles sont leurs valeurs.
+*/
+function add(nbr1, nbr2) {
+  return nbr1 + nbr2;
+}
+let addition = add(2, 34);
+console.log(addition);
+//autres exemples de fonctions qui retournent(natives de js):
+let hasard = Math.random();
+
+const tab = ["voiture", "tire", "caisse"];
+let voitureIndex = tab.indexOf("caisse");
+// celle ci est une peu plus complexe que les précédentes,car en cas  cas d'echec ,elle retourne la valeur -1.
+
+//Les fonctions d'objets.
+
+//Les fonctions d'un objet (dans tous les langages) s'appellent une méthode.
+
+// exemple
+const compteEnBanque = {
+  id: "564446466646454",
+  proprio: "Jean-Michel Lamouche",
+  comptes: [3459.12, 12474.56, 9841.47],
+  total() {
+    let total = 0;
+    for (compte of this.comptes) {
+      total += compte;
+    }
+    return total;
+  },
+};
+
+let totalCompte = compteEnBanque.total();
+console.log(totalCompte);
