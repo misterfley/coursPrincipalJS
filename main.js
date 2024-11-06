@@ -418,3 +418,38 @@ const compteEnBanque = {
 
 let totalCompte = compteEnBanque.total();
 console.log(totalCompte);
+
+//Timer
+
+/*
+Il y a 2 types de timers
+le setTimeout  et le setInterval
+*/
+
+//Le setTimeout est un timer qui s'execute UNE SEULE FOIS!
+setTimeout(function(){
+  console.log("coucou");
+ 
+} ,3000)
+//coucou va s'afficher
+
+//Pour controler le timer faut le mettre dans une variable.
+const timer= setTimeout(function(){
+  console.log("coucou2");
+  
+},3000)
+
+//Cette fonction empêche le lancement du timer:
+clearTimeout(timer)
+
+// setInterval
+/*
+Contrairement au setTimeout, il va lancer un compteur toutes les x millisecondes.
+*/
+//Avec une fonction fléchée
+let count= 0;
+const timer2 = setInterval (()=> {
+  console.log(`C'est le cycle: ${count}`);
+  count++;
+  
+},1000)

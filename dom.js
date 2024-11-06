@@ -111,3 +111,7 @@ for (let i = 1; i <= 10; i++) {
 
 //hors sujet important
 
+//modulo
+//c'est le reste de la division
+//9%2=1
+
